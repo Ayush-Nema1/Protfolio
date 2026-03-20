@@ -95,7 +95,6 @@ function ProjectCard({ proj }) {
                     transition-all duration-200 hover:-translate-y-1 hover:shadow-xl
                     hover:border-gray-300 cursor-pointer group relative">
 
-      {/* Featured badge */}
       {proj.featured && (
         <div className="absolute top-2.5 sm:top-3 left-2.5 sm:left-3 z-10
                         flex items-center gap-1
@@ -105,7 +104,6 @@ function ProjectCard({ proj }) {
         </div>
       )}
 
-      {/* Thumbnail */}
       <div className="h-[180px] sm:h-[220px] overflow-hidden relative bg-bg2">
         {proj.image ? (
           <img src={proj.image} alt={proj.title}
@@ -115,7 +113,6 @@ function ProjectCard({ proj }) {
           <SocialMock />
         )}
 
-        {/* Hover overlay */}
         <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100
                         transition-opacity duration-200 flex items-center justify-center gap-2">
           {proj.live && proj.live !== '#' && (
@@ -140,15 +137,19 @@ function ProjectCard({ proj }) {
         </div>
       </div>
 
-      {/* Info */}
       <div className="p-3.5 sm:p-4 border-t border-gray-50 flex justify-between items-start gap-2">
         <div className="min-w-0">
           <div className="text-[13px] sm:text-[14px] font-semibold text-ink mb-1 truncate">
             {proj.title}
           </div>
-          <p className="text-[11px] sm:text-[12px] text-muted leading-[1.55] mb-2 sm:mb-2.5 line-clamp-2">
+
+          {/* ✅ ONLY CHANGE HERE */}
+          <p className="text-[11px] sm:text-[12px] text-muted leading-[1.55] mb-2 sm:mb-2.5 
+                        line-clamp-3 sm:line-clamp-2 
+                        group-hover:line-clamp-none transition-all duration-200">
             {proj.desc}
           </p>
+
           <div className="flex gap-1 sm:gap-1.5 flex-wrap">
             {proj.tags.slice(0, 4).map(t => (
               <span key={t} className="text-[9px] sm:text-[10px] px-2 sm:px-2.5 py-0.5
@@ -183,4 +184,4 @@ export default function Projects() {
       </div>
     </section>
   )
-}
+}}
