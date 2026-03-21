@@ -14,32 +14,23 @@ export default function Hero() {
   const [displayed, setDisplayed] = useState('')
   const [typing, setTyping]       = useState(true)
 
-  // Typing animation
   useEffect(() => {
     const current = GREETINGS[greetIdx]
     let timeout
-
     if (typing) {
       if (displayed.length < current.length) {
-        timeout = setTimeout(() => {
-          setDisplayed(current.slice(0, displayed.length + 1))
-        }, 55)
+        timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length + 1)), 55)
       } else {
-        // Pause at full text then start erasing
         timeout = setTimeout(() => setTyping(false), 2200)
       }
     } else {
       if (displayed.length > 0) {
-        timeout = setTimeout(() => {
-          setDisplayed(displayed.slice(0, -1))
-        }, 30)
+        timeout = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 30)
       } else {
-        // Move to next greeting
         setGreetIdx(i => (i + 1) % GREETINGS.length)
         setTyping(true)
       }
     }
-
     return () => clearTimeout(timeout)
   }, [displayed, typing, greetIdx])
 
@@ -93,23 +84,36 @@ export default function Hero() {
 
       {/* Buttons */}
       <div className="flex flex-wrap gap-2 sm:gap-2.5 mb-10 sm:mb-12">
-        <button
-          onClick={handleEmail}
-          className="hbtn hbtn-fill border-none cursor-pointer text-[13px] sm:text-[14px]">
-          {copied ? '✓ Email Copied!' : 'Email'}
+
+        {/* Resume — black filled, FIRST */}
+        <a href="/RESUME_AYUSH_NEMA.pdf" download="Ayush_Nema_Resume.pdf"
+          className="hbtn hbtn-fill text-[13px] sm:text-[14px] inline-flex items-center gap-2">
+          <svg width="13" height="13" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" strokeWidth="2.5">
+            <path strokeLinecap="round" strokeLinejoin="round"
+              d="M12 3v13m0 0l-4-4m4 4l4-4M3 21h18" />
+          </svg>
+          Download Resume
+        </a>
+
+        {/* Email — Gmail opens directly */}
+        <button onClick={handleEmail}
+          className="hbtn border-none cursor-pointer text-[13px] sm:text-[14px]">
+          {copied ? '✓ Copied!' : 'Email'}
         </button>
+
+        {/* LinkedIn */}
         <a href={DATA.linkedin} target="_blank" rel="noreferrer"
           className="hbtn text-[13px] sm:text-[14px]">
           LinkedIn
         </a>
-        <a href="/RESUME_AYUSH_NEMA.pdf" download
-          className="hbtn text-[13px] sm:text-[14px]">
-          Resume ↓
-        </a>
+
+        {/* GitHub */}
         <a href={DATA.github} target="_blank" rel="noreferrer"
           className="hbtn text-[13px] sm:text-[14px]">
           GitHub
         </a>
+
       </div>
 
       {/* Scroll hint */}
