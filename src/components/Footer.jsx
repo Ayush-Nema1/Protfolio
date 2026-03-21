@@ -22,9 +22,9 @@ export default function Footer() {
       {/* Quote strip */}
       <div className="border-b border-border py-4 px-4 sm:px-8 md:px-13">
         <div className="sec-inner text-center">
-          <p className="text-[12px] sm:text-[13px] text-pale italic">
+          <p className="text-[12px] sm:text-[13px] text-gray-400 italic">
             "Whether you think you can, or you think you can't — you're right."
-            <span className="not-italic font-medium text-pale ml-1.5">— Henry Ford</span>
+            <span className="not-italic font-medium text-gray-400 ml-1.5">— Henry Ford</span>
           </p>
         </div>
       </div>
