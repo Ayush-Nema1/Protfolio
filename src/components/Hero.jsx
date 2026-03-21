@@ -1,8 +1,47 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { DATA } from '../data.js'
 
+const GREETINGS = [
+  "Hi, I'm Ayush 👋",
+  "नमस्ते, मैं आयुष हूं 🙏",
+  "Hello, I'm Ayush 💻",
+  "Hey there! I'm Ayush 🚀",
+]
+
 export default function Hero() {
-  const [copied, setCopied] = useState(false)
+  const [copied, setCopied]       = useState(false)
+  const [greetIdx, setGreetIdx]   = useState(0)
+  const [displayed, setDisplayed] = useState('')
+  const [typing, setTyping]       = useState(true)
+
+  // Typing animation
+  useEffect(() => {
+    const current = GREETINGS[greetIdx]
+    let timeout
+
+    if (typing) {
+      if (displayed.length < current.length) {
+        timeout = setTimeout(() => {
+          setDisplayed(current.slice(0, displayed.length + 1))
+        }, 55)
+      } else {
+        // Pause at full text then start erasing
+        timeout = setTimeout(() => setTyping(false), 2200)
+      }
+    } else {
+      if (displayed.length > 0) {
+        timeout = setTimeout(() => {
+          setDisplayed(displayed.slice(0, -1))
+        }, 30)
+      } else {
+        // Move to next greeting
+        setGreetIdx(i => (i + 1) % GREETINGS.length)
+        setTyping(true)
+      }
+    }
+
+    return () => clearTimeout(timeout)
+  }, [displayed, typing, greetIdx])
 
   const go = href => document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
 
@@ -28,6 +67,15 @@ export default function Hero() {
                       text-[11px] sm:text-xs font-medium text-green mb-5 sm:mb-6">
         <span className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-green animate-pulse-dot" />
         Available for opportunities
+      </div>
+
+      {/* Typing greeting */}
+      <div className="h-[36px] sm:h-[44px] flex items-center mb-2 sm:mb-3">
+        <span className="text-[22px] sm:text-[28px] font-semibold text-ink tracking-tight">
+          {displayed}
+          <span className="inline-block w-[2px] h-[22px] sm:h-[28px] bg-ink ml-0.5
+                           align-middle animate-blink" />
+        </span>
       </div>
 
       {/* Headline */}
