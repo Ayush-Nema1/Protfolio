@@ -36,9 +36,9 @@ export const DATA = {
     },
     {
       id: 2,
-      title: 'Joinfy — Video Conferencing App',
+      title: 'AI-Enabled Video Conferencing with Personal Notes',
       desc:
-        'Real-time video conferencing application with peer-to-peer audio/video calling, screen sharing, and live chat. Built using WebRTC and Socket.io to ensure low-latency communication and secure meeting rooms.',
+        'Built a real-time video conferencing app with peer-to-peer audio/video calling, screen sharing, and live chat. Added AI-powered summaries for late joiners and a private notes panel. Used WebRTC and Socket.io for low-latency and scalable communication.',
       image: '/images/projects/joinfy.png',
       tags: [
         'WebRTC',
@@ -48,6 +48,9 @@ export const DATA = {
         'MongoDB',
         'Express.js',
         'JWT',
+        'Genrative AI',
+        'Speech Recognition',
+        'Speech to Text',
       ],
       live:
         'https://videoconfrencing-joinfyfrontend.onrender.com/',
