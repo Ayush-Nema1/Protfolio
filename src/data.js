@@ -97,9 +97,9 @@ export const DATA = {
       type: 'Internship',
       mode: 'Remote',
       location: 'Delhi, India',
-      duration: 'Feb 2026 – Present',
-      period: '2 months',
-      current: true,
+      duration: 'Feb 2026 – May 2026',
+      period: '3 months',
+      current: false,
       desc:
         'Building responsive, high-performance web applications using Next.js and React. Contributing to real-world client projects with a focus on clean component architecture, optimised rendering, REST API integration, and cross-browser compatibility.',
       skills: [
